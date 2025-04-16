@@ -1,4 +1,4 @@
-package br.com.xuiter.java_spring_docker;
+package br.com.xuiter.java_spring_docker.controllers;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -23,7 +23,7 @@ public class PaisesContollerTest {
     void countriesList() throws Exception {
         mockMvc.perform(get("/countries"))
                 .andExpect(MockMvcResultMatchers.status().isOk())
-                .andExpect(content().string(this.mockCountries()));
+                .andExpect(content().json(this.mockCountries()));
     }
 
     private String mockCountries() {
@@ -31,73 +31,73 @@ public class PaisesContollerTest {
                [
                      {
                        "id": 1,
-                       "name": "Brasil",
+                       "nome": "Brasil",
                        "capital": "Brasília",
-                       "region": "América do Sul",
-                       "population": 213993437
+                       "regiao": "América do Sul",
+                       "populacao": 213993437
                      },
                      {
                        "id": 2,
-                       "name": "Estados Unidos",
+                       "nome": "Estados Unidos",
                        "capital": "Washington, D.C.",
-                       "region": "América do Norte",
-                       "population": 331002651
+                       "regiao": "América do Norte",
+                       "populacao": 331002651
                      },
                      {
                        "id": 3,
-                       "name": "Alemanha",
+                       "nome": "Alemanha",
                        "capital": "Berlim",
-                       "region": "Europa",
-                       "population": 83783942
+                       "regiao": "Europa",
+                       "populacao": 83783942
                      },
                      {
                        "id": 4,
-                       "name": "Japão",
+                       "nome": "Japão",
                        "capital": "Tóquio",
-                       "region": "Ásia",
-                       "population": 126476461
+                       "regiao": "Ásia",
+                       "populacao": 126476461
                      },
                      {
                        "id": 5,
-                       "name": "França",
+                       "nome": "França",
                        "capital": "Paris",
-                       "region": "Europa",
-                       "population": 65273511
+                       "regiao": "Europa",
+                       "populacao": 65273511
                      },
                      {
                        "id": 6,
-                       "name": "Canadá",
+                       "nome": "Canadá",
                        "capital": "Ottawa",
-                       "region": "América do Norte",
-                       "population": 37742154
+                       "regiao": "América do Norte",
+                       "populacao": 37742154
                      },
                      {
                        "id": 7,
-                       "name": "Austrália",
+                       "nome": "Austrália",
                        "capital": "Canberra",
-                       "region": "Oceania",
-                       "population": 25499884
+                       "regiao": "Oceania",
+                       "populacao": 25499884
                      },
                      {
                        "id": 8,
-                       "name": "Índia",
+                       "nome": "Índia",
                        "capital": "Nova Délhi",
-                       "region": "Ásia",
-                       "population": 1380004385
+                       "regiao": "Ásia",
+                       "populacao": 1380004385
                      },
                      {
                        "id": 9,
-                       "name": "Reino Unido",
+                       "nome": "Reino Unido",
                        "capital": "Londres",
-                       "region": "Europa",
-                       "population": 67886011
+                       "regiao": "Europa",
+                       "populacao": 67886011
                      },
                      {
                        "id": 10,
-                       "name": "México",
+                       "nome": "México",
                        "capital": "Cidade do México",
-                       "region": "América do Norte",
-                       "population": 128932753
+                       "regiao": "América do Norte",
+                       "populacao": 128932753
                      }
                ]
         """;
