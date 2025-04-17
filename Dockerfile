@@ -7,6 +7,7 @@ WORKDIR /app
 # Copiar o arquivo pom.xml e o wrapper do Maven
 COPY pom.xml .
 COPY mvnw .
+COPY .mvn .mvn
 
 # Copiar a pasta src
 COPY src ./src
