@@ -19,7 +19,7 @@ RUN chmod +x mvnw
 RUN ./mvnw clean package -DskipTests
 
 # Usar uma imagem base do JRE para executar o aplicativo
-FROM openjdk:21-jre-slim
+FROM ubuntu/jre:21-24.04_stable
 
 # Definir o diretório de trabalho
 WORKDIR /app
