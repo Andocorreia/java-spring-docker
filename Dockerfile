@@ -25,7 +25,7 @@ FROM openjdk:21
 WORKDIR /app
 
 # Copiar o JAR gerado do estágio de build
-COPY --from=build /app/target/your-app.jar app.jar
+COPY --from=build /app/target/java-spring-docker-0.0.1-SNAPSHOT.jar app.jar
 
 # Comando para executar o aplicativo
 CMD ["java", "-jar", "app.jar"]
