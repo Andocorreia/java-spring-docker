@@ -1,5 +1,5 @@
 # Usar uma imagem base do OpenJDK
-FROM openjdk:21-jdk-slim as build
+FROM ubuntu/jre:21-24.04_stable as build
 
 # Definir o diretório de trabalho dentro do contêiner
 WORKDIR /app
