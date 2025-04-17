@@ -1,22 +1,30 @@
-# Use uma imagem base com Java 21
+# Usar uma imagem base do OpenJDK
 FROM openjdk:21-jdk-slim as build
 
-# Defina o diretório de trabalho
+# Definir o diretório de trabalho dentro do contêiner
 WORKDIR /app
 
-# Copie o arquivo pom.xml e baixe as dependências
+# Copiar o arquivo pom.xml e o wrapper do Maven
 COPY pom.xml .
+COPY mvnw .
+
+# Copiar a pasta src
 COPY src ./src
+
+# Garantir que o wrapper do Maven tenha permissões de execução
+RUN chmod +x mvnw
+
+# Executar o Maven para compilar o projeto
 RUN ./mvnw clean package -DskipTests
 
-# Etapa de execução
-FROM openjdk:21-jdk-slim
+# Usar uma imagem base do JRE para executar o aplicativo
+FROM openjdk:21-jre-slim
 
-# Copie o JAR gerado para a nova imagem
-COPY --from=build /app/target/*.jar app.jar
+# Definir o diretório de trabalho
+WORKDIR /app
 
-# Exponha a porta que sua aplicação usará
-EXPOSE 8080
+# Copiar o JAR gerado do estágio de build
+COPY --from=build /app/target/your-app.jar app.jar
 
-# Comando para executar a aplicação
-ENTRYPOINT ["java", "-jar", "/app.jar"]
+# Comando para executar o aplicativo
+CMD ["java", "-jar", "app.jar"]
