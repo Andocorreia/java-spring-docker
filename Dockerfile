@@ -1,5 +1,5 @@
 # Usar uma imagem base do OpenJDK
-FROM ubuntu/jre:21-24.04_stable as build
+FROM openjdk:21 as build
 
 # Definir o diretório de trabalho dentro do contêiner
 WORKDIR /app
@@ -19,7 +19,7 @@ RUN chmod +x mvnw
 RUN ./mvnw clean package -DskipTests
 
 # Usar uma imagem base do JRE para executar o aplicativo
-FROM ubuntu/jre:21-24.04_stable
+FROM openjdk:21
 
 # Definir o diretório de trabalho
 WORKDIR /app
